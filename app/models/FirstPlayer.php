@@ -10,7 +10,7 @@ class FirstPlayer extends Player
 
 		public $positionY = 5;
 
-		public function go()
+		public function go($nextStep)
 		{
 			return 'go';
 		}

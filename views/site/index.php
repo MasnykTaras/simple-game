@@ -26,12 +26,14 @@ include_once(ROOT . '/views/layouts/header.php'); ?>
 		endwhile; ?>
 	</div>
 	<div class="form-area">
-		<form class="form" method="post" action="#">
+		<form class="form" method="post">
 			<div class="form-group">
 			    <label for="exampleInputEmail1">Go</label>
-			    <input type="text" class="form-control" placeholder="go" name="go">
+				<button type="submit" name='go' value="top" class="btn btn-default">Top</button>
+				<button type="submit" name='go' value="down" class="btn btn-default">Down</button>
+				<button type="submit" name='go' value="left" class="btn btn-default">Left</button>
+				<button type="submit" name='go' value="right" class="btn btn-default">Right</button>
 			</div>
-			<button type="submit" class="btn btn-default">Submit</button>
 		</form>
 	</div>
 </div>

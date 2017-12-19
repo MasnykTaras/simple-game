@@ -10,9 +10,34 @@ class SecondPlayer extends Player
 
 		public $positionY = 5;
 
-		public function go()
+		public function go($directions)
 		{
-			return 'go';
+			
+			$nextStep = $this->move[$directions];
+
+			if($nextStep['axis'] == 'x'){
+
+				$newPosition = $_SESSION["player__2"]['position']['x'] + $nextStep['vlue'];
+				
+				if($newPosition > 10 || $newPosition < 0 ){
+					$this->positionX = $_SESSION["player__2"]['position']['x'];
+				}else{
+					$this->positionX = $newPosition;
+				}
+				$this->positionY = $_SESSION["player__2"]['position']['y'];
+			}
+
+			if($nextStep['axis'] == 'y'){
+				$newPosition = $_SESSION["player__2"]['position']['y'] + $nextStep['vlue'];
+				
+				if($newPosition > 10 || $newPosition < 0){
+					$this->positionY = $_SESSION["player__2"]['position']['y'];
+				}else{
+					$this->positionY = $newPosition;
+				}
+				$this->positionX = $_SESSION["player__2"]['position']['x'];
+			}
+
 		}
 		public function shoot()
 		{

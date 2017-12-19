@@ -11,7 +11,26 @@ abstract class Player
 
 	public $hitPoints = 10;
 
-	abstract public function go();
+	public $move = array(
+				'top' => array(
+						'vlue' => -1,
+						'axis' => 'y',
+				), 
+				'down' =>array(
+						'vlue' => 1,
+						'axis' => 'y',
+				),
+				'right' => array(
+						'vlue' => 1,
+						'axis' => 'x',
+				), 
+				'left' => array(
+						'vlue' => -1,
+						'axis' => 'x',
+				),
+			);
+
+	abstract public function go($nextStep);
 	abstract public function shoot();
 	abstract public function hit();
 	public function position()
