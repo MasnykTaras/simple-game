@@ -12,7 +12,7 @@ include_once(ROOT . '/views/layouts/header.php'); ?>
 			$j = 0;
 			while($j <= 10): ?>
 				<div class="game__tile" data-y="<?php echo $i; ?>" data-x="<?php echo $j; ?>">
-					<?php if($positionPlayer1['y'] === $i &&  $positionPlayer1['x'] === $j): ?>
+					<?php if($positionPlayer1['position']['y'] === $i &&  $positionPlayer1['position']['x'] === $j): ?>
 						<div id="player__1" class="player">P1</div>
 					<?php endif; ?>
 					<?php if($positionPlayer2['position']['y'] === $i &&  $positionPlayer2['position']['x'] === $j): ?>

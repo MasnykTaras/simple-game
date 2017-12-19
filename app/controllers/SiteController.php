@@ -19,25 +19,41 @@ class SiteController
 
 
 			$player__2->go($_POST['go']);
+
+			$player__1->go($player__1->creatMove());
+
+			
+
+			$_SESSION["player__1"] = array(
+				'position' =>  $player__1->position(),
+				'hitspoints' => $player__1->hitPoints,
+			);
 			
 			$_SESSION["player__2"] = array(
 				'position' =>  $player__2->position(),
-				'hitspoints' => $player__1->hitPoints,
+				'hitspoints' => $player__2->hitPoints,
 			);
+
+
 
 		}else{
 			
 			session_start();
 
+			$_SESSION["player__1"] = array(
+				'position' =>  $player__1->position(),
+				'hitspoints' => $player__1->hitPoints,
+			);
+
 			$_SESSION["player__2"] = array(
 				'position' => $player__2->position(), 
-				'hitspoints' => $player__1->hitPoints,
+				'hitspoints' => $player__2->hitPoints,
 			);
 
 			
 		}
 
-		$positionPlayer1 = $player__1->position();
+		$positionPlayer1 = $_SESSION["player__1"];
 
 		$positionPlayer2 = $_SESSION["player__2"];
 
