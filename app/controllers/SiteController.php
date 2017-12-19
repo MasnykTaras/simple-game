@@ -12,10 +12,11 @@ class SiteController
 
 		$positionPlayer1 = $player__1->position();
 
-		$positionPlayer2 = $player__2->position();		
+		$positionPlayer2 = $player__2->position();	
+
 		
 		
-		if(isset($_POST) && !empty($_POST)){
+		if(isset($_POST) && !empty($_POST) && !isset($_POST['destroy'])){
 
 
 			$player__2->go($_POST['go']);
@@ -33,9 +34,8 @@ class SiteController
 				'position' =>  $player__2->position(),
 				'hitspoints' => $player__2->hitPoints,
 			);
-
-
-
+		}elseif($_POST['destroy']){
+			session_destroy();
 		}else{
 			
 			session_start();

@@ -6,7 +6,7 @@ include_once(ROOT . '/views/layouts/header.php'); ?>
 <div class="custom__container">
 	
 	<div class="game__space">
-		<?php 
+		<?php 		
 		$i = 0; 
 		while($i <= 10):
 			$j = 0;
@@ -34,6 +34,7 @@ include_once(ROOT . '/views/layouts/header.php'); ?>
 				<button type="submit" name='go' value="left" class="btn btn-default">Left</button>
 				<button type="submit" name='go' value="right" class="btn btn-default">Right</button>
 			</div>
+			<button type="submit" name='destroy' valye="destroy" class="btn btn-default">End game</button>
 		</form>
 	</div>
 </div>
