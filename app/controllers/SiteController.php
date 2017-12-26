@@ -15,11 +15,27 @@ class SiteController
 
 		$positionPlayer2 = $player__2->position();			
 		
+		
+
 		if(isset($_POST) && !empty($_POST) && !isset($_POST['destroy'])){
 
-			$player__2->go($_POST['go']);
 
-			$player__1->go($player__1->creatMove());			
+			if(isset($_POST['go'])){
+
+				$player__2->go($_POST['go']);	
+
+				if(Rule::overPlacement($player__1->position(),$player__2->position())){
+					$_SESSION["player__2"] = array(
+							'position' =>  $player__2->position(),
+							'hitspoints' => $player__2->hitPoints,
+					);		
+				}
+			}
+			if(isset($_POST['shoot'])){
+				var_dump($_POST);
+			}
+				
+			$player__1->go($player__1->creatMove());	
 
 			if(Rule::overPlacement($player__1->position(),$player__2->position())){
 
@@ -27,10 +43,7 @@ class SiteController
 					'position' =>  $player__1->position(),
 					'hitspoints' => $player__1->hitPoints,
 				);			
-				$_SESSION["player__2"] = array(
-					'position' =>  $player__2->position(),
-					'hitspoints' => $player__2->hitPoints,
-				);
+				
 			}
 			
 

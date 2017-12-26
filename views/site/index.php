@@ -28,11 +28,20 @@ include_once(ROOT . '/views/layouts/header.php'); ?>
 	<div class="form-area">
 		<form class="form" method="post">
 			<div class="form-group">
-			    <label for="exampleInputEmail1">Go</label>
+			    <label>Go</label>
 				<button type="submit" name='go' value="top" class="btn btn-default">Top</button>
 				<button type="submit" name='go' value="down" class="btn btn-default">Down</button>
 				<button type="submit" name='go' value="left" class="btn btn-default">Left</button>
 				<button type="submit" name='go' value="right" class="btn btn-default">Right</button>
+			</div>
+			<div class="form-group">
+				<label>Shoot</label>
+				<br>
+				<input class="shoot-mark-x" type="text" name="shootMarkX">
+				<br>
+				<input class="shoot-mark-y" type="text" name="shootMarkY">
+				<br>
+				<button type="submit" name='shoot' value="shoot" class="btn btn-default">Shoot</button>
 			</div>
 			<button type="submit" name='destroy' valye="destroy" class="btn btn-default">End game</button>
 		</form>
