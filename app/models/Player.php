@@ -29,10 +29,6 @@ abstract class Player
 						'axis' => 'x',
 				),
 			);
-
-	abstract public function go($nextStep);
-	abstract public function shoot();
-	abstract public function hit();
 	public function position()
 	{
 	 	return array(
@@ -40,6 +36,11 @@ abstract class Player
 				'y' => $this->positionY,
 			);
 	}
+
+	abstract public function go($nextStep);
+	abstract public function shoot();
+	abstract public function hit();
+	
 	
 }
 ?>
