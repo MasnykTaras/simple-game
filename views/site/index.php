@@ -1,8 +1,7 @@
 <?php 
 
 include_once(ROOT . '/views/layouts/header.php'); 
-var_dump($positionPlayer1);
-var_dump($positionPlayer2);
+
 ?>
 
 
@@ -10,9 +9,9 @@ var_dump($positionPlayer2);
 	
 	<div class="game__space" style="width: <?php echo $areaWidth; ?>px">
 		<?php 		
-		$i = 0; 
+		$i = 1; 
 		while($i <= $sizeArea):
-			$j = 0;
+			$j = 1;
 			while($j <= $sizeArea): ?>
 				<div class="game__tile" data-y="<?php echo $i; ?>" data-x="<?php echo $j; ?>">
 					<?php if($positionPlayer1['position']['y'] == $i &&  $positionPlayer1['position']['x'] == $j): ?>

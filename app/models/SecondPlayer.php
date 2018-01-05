@@ -21,7 +21,7 @@ class SecondPlayer extends Player
 				$newPosition = $_SESSION["player__2"]['position']['x'] + $nextStep['vlue'];
 				$oldPostitionX = $_SESSION["player__2"]['position']['x'];
 				
-				if($newPosition > Rule::getSizeArea() || $newPosition < 0){
+				if($newPosition > Rule::getSizeArea() || $newPosition < 1){
 						$this->positionX = $_SESSION["player__2"]['position']['x'];
 				}else{
 
@@ -35,7 +35,7 @@ class SecondPlayer extends Player
 
 				$oldPostitionY = $_SESSION["player__2"]['position']['y'];
 				
-				if($newPosition > Rule::getSizeArea() || $newPosition < 0 ){
+				if($newPosition > Rule::getSizeArea() || $newPosition < 1 ){
 					$this->positionY = $_SESSION["player__2"]['position']['y'];
 				}else{
 					$this->positionY = $newPosition;					
@@ -44,15 +44,16 @@ class SecondPlayer extends Player
 			}
 
 		}
-		public function shoot($p1position, $shoot)
+		public function shoot($pPosition, $shoot)
 		{
-			if($p1position['x'] == $shoot['x'] && $p1position['y'] == $shoot['y']){
-				$newHit =  $_SESSION["player__1"]['hitspoints'] - 1;
+			$newHit = $_SESSION["player__1"]['hitspoints'] - 1;
+			if($pPosition['x'] == $shoot['x'] && $pPosition['y'] == $shoot['y']){
+				$this->hitPoints = $newHit;
+				return 'hit';
 			}else{
-				$newHit =  $_SESSION["player__1"]['hitspoints'];
+				$this->hitPoints =  $_SESSION["player__1"]['hitspoints'];
 			}
 			
-			return $this->hitPoints = $newHit;
 			
 		}
 		public function hit()

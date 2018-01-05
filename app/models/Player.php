@@ -36,9 +36,13 @@ abstract class Player
 				'y' => $this->positionY,
 			);
 	}
+	public function getHitpoint()
+	{
+	 	return $this->hitPoints;
+	}
 
 	abstract public function go($nextStep);
-	abstract public function shoot($p1position, $shoot);
+	abstract public function shoot($pPosition, $shoot);
 	abstract public function hit();
 	
 	
