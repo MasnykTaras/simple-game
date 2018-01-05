@@ -47,10 +47,10 @@ class SiteController
 
 			}				
 
-			if(Rule::cheackHitpoint()){
+			if($result = Rule::cheackHitpoint()){
 
 				Rule::start($player__1, $player__2);	
-				$advertisement = Rule::advertisement();					
+				$advertisement = Rule::advertisement($result);					
 			}	
 						
 

@@ -26,11 +26,16 @@ abstract class Rule
 	static public function cheackHitpoint()
 	{
 
-		if($_SESSION["player__1"]['hitspoints'] == 9){
-			return true;
+		if($_SESSION["player__1"]['hitspoints'] <= 9 ){
+			return 'First';
+		}
+		if($_SESSION["player__2"]['hitspoints'] <= 9 ){
+			return 'Second';
+		
 		}
 		return false;
 	}
+	
 	static public function start($player__1, $player__2)
 	{		
 
@@ -45,10 +50,10 @@ abstract class Rule
 			'hitspoints' => $player__2->hitPoints,
 		);	
 	}
-	static public function advertisement()
+	static public function advertisement($result)
 	{
 		return "<div class='reuslt'>
-					<p>Second player Win</p>
+					<p>$result player Win</p>
 				</div>";
 	}
 
