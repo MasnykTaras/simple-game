@@ -10,7 +10,7 @@ abstract class Rule
 	 * @param array $player__2 
 	 * @return boolean
 	 */
-	static function overPlacement($player__1, $player__2)
+	static public function overPlacement($player__1, $player__2)
 	{
 			$p1positionX = $player__1['x'];
 			$p1positionY = $player__1['y'];
@@ -22,6 +22,34 @@ abstract class Rule
 				return false;
 			}
 			return true;
+	}
+	static public function cheackHitpoint()
+	{
+
+		if($_SESSION["player__1"]['hitspoints'] == 9){
+			return true;
+		}
+		return false;
+	}
+	static public function start($player__1, $player__2)
+	{		
+
+		session_start();
+		$_SESSION["player__1"] = array(
+		'position' =>  $player__1->position(),
+		'hitspoints' => $player__1->hitPoints,
+		);
+
+		$_SESSION["player__2"] = array(
+			'position' => $player__2->position(), 
+			'hitspoints' => $player__2->hitPoints,
+		);	
+	}
+	static public function advertisement()
+	{
+		return "<div class='reuslt'>
+					<p>Second player Win</p>
+				</div>";
 	}
 
 }

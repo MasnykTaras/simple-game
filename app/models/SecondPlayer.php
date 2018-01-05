@@ -44,9 +44,16 @@ class SecondPlayer extends Player
 			}
 
 		}
-		public function shoot()
+		public function shoot($p1position, $shoot)
 		{
-			return 'shoot';
+			if($p1position['x'] == $shoot['x'] && $p1position['y'] == $shoot['y']){
+				$newHit =  $_SESSION["player__1"]['hitspoints'] - 1;
+			}else{
+				$newHit =  $_SESSION["player__1"]['hitspoints'];
+			}
+			
+			return $this->hitPoints = $newHit;
+			
 		}
 		public function hit()
 		{

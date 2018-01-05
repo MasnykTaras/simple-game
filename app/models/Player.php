@@ -38,7 +38,7 @@ abstract class Player
 	}
 
 	abstract public function go($nextStep);
-	abstract public function shoot();
+	abstract public function shoot($p1position, $shoot);
 	abstract public function hit();
 	
 	

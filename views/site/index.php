@@ -23,7 +23,7 @@ include_once(ROOT . '/views/layouts/header.php'); ?>
 			$j++;
 			endwhile; 
 		$i++;
-		endwhile; ?>
+		endwhile; ?>		
 	</div>
 	<div class="form-area">
 		<form class="form" method="post">
@@ -41,10 +41,12 @@ include_once(ROOT . '/views/layouts/header.php'); ?>
 				<br>
 				<input class="shoot-mark-y" type="text" name="shootMarkY">
 				<br>
-				<button type="submit" name='shoot' value="shoot" class="btn btn-default">Shoot</button>
+				<button disabled type="submit" name='shoot' value="shoot" class="btn btn-default btn-shoot">Shoot</button>
 			</div>
-			<button type="submit" name='destroy' valye="destroy" class="btn btn-default">End game</button>
+			<button type="submit" name='destroy' valye="destroy" class="btn btn-default">Start new game</button>
 		</form>
 	</div>
+
 </div>
+<?php echo $advertisement; ?>
 <?php include_once(ROOT . '/views/layouts/footer.php'); ?>

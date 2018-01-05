@@ -55,7 +55,7 @@ class FirstPlayer extends Player
 			// $moveKey = array_rand($move, 1);
 			return $move[array_rand($move, 1)];
 		}
-		public function shoot()
+		public function shoot($p1position, $shoot)
 		{
 			return 'shoot';
 		}
