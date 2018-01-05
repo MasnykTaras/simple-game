@@ -11,6 +11,18 @@ class SiteController
 		$player__1 = new FirstPlayer();
 		$player__2 = new SecondPlayer();
 
+		$sizeArea = Rule::getSizeArea();
+
+
+		$areaWidth = ($sizeArea + 1)  * 50 + 20;
+
+		$player__1->positionX = 0;
+		$player__1->positionY = round($sizeArea/2);
+		$player__2->positionX = $sizeArea;
+		$player__2->positionY = round($sizeArea/2);
+
+
+
 		$positionPlayer1 = $player__1->position();
 
 		$positionPlayer2 = $player__2->position();			
@@ -32,7 +44,8 @@ class SiteController
 
 				if(Rule::overPlacement($player__1->position(),$player__2->position())){
 					$_SESSION["player__2"] = array(
-							'position' =>  $player__2->position()							
+							'position' =>  $player__2->position(),
+							'hitspoints' => $_SESSION["player__2"]['hitspoints']						
 					);		
 				}
 			}
@@ -66,11 +79,13 @@ class SiteController
 			
 		}
 
-
+		
 
 		$positionPlayer1 = $_SESSION["player__1"];
 
 		$positionPlayer2 = $_SESSION["player__2"];
+
+
 
 		include_once(ROOT . '/views/site/index.php');
 

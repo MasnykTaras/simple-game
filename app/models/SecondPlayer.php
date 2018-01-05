@@ -7,9 +7,9 @@ use app\models\Rule;
 
 class SecondPlayer extends Player
 	{
-		public $positionX = 10;
+		public $positionX;
 
-		public $positionY = 5;
+		public $positionY;
 
 		public function go($directions)
 		{
@@ -21,7 +21,7 @@ class SecondPlayer extends Player
 				$newPosition = $_SESSION["player__2"]['position']['x'] + $nextStep['vlue'];
 				$oldPostitionX = $_SESSION["player__2"]['position']['x'];
 				
-				if($newPosition > 10 || $newPosition < 0){
+				if($newPosition > Rule::getSizeArea() || $newPosition < 0){
 						$this->positionX = $_SESSION["player__2"]['position']['x'];
 				}else{
 
@@ -35,7 +35,7 @@ class SecondPlayer extends Player
 
 				$oldPostitionY = $_SESSION["player__2"]['position']['y'];
 				
-				if($newPosition > 10 || $newPosition < 0 ){
+				if($newPosition > Rule::getSizeArea() || $newPosition < 0 ){
 					$this->positionY = $_SESSION["player__2"]['position']['y'];
 				}else{
 					$this->positionY = $newPosition;					

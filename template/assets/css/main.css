@@ -39,7 +39,7 @@ footer{
 .game__space{
   display: flex;
   flex-wrap: wrap;
-  width: 570px;
+/*  width: 570px;*/
   padding: 0 10px;
 }
 .form-area{
@@ -79,8 +79,11 @@ footer{
 	line-height: 32px;
     font-size: 32px;
     padding: 20px;
-    align-self: center;
-    
+    align-self: center;    
+}
+.shoot{
+	width: 25px;
+	margin-bottom: 5px;
 }
 
 

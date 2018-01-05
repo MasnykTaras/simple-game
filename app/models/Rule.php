@@ -4,6 +4,8 @@ namespace app\models;
 
 abstract class Rule
 {
+
+	private static $areaSize = 5;
 	/**
 	 * Check if players one behind the other
 	 * @param array $player__1 
@@ -23,19 +25,27 @@ abstract class Rule
 			}
 			return true;
 	}
+	/**
+	 * Cheack if hitpoint is over 
+	 * @return bool/str
+	 */
 	static public function cheackHitpoint()
 	{
 
-		if($_SESSION["player__1"]['hitspoints'] <= 9 ){
-			return 'First';
-		}
-		if($_SESSION["player__2"]['hitspoints'] <= 9 ){
+		if($_SESSION["player__1"]['hitspoints'] <= 0 ){
 			return 'Second';
+		}
+		if($_SESSION["player__2"]['hitspoints'] <= 0 ){
+			return 'First';
 		
 		}
-		return false;
+			return false;
 	}
-	
+	/**
+	 * Start sesion (game)
+	 * @param obj $player__1 
+	 * @param obj $player__2 	
+	 */
 	static public function start($player__1, $player__2)
 	{		
 
@@ -50,11 +60,21 @@ abstract class Rule
 			'hitspoints' => $player__2->hitPoints,
 		);	
 	}
+	/**
+	 * View advertisement winer
+	 * @param str $result 
+	 * @return str
+	 */
 	static public function advertisement($result)
 	{
 		return "<div class='reuslt'>
 					<p>$result player Win</p>
 				</div>";
+	}
+
+	static public function getSizeArea()
+	{
+		return self::$areaSize;
 	}
 
 }

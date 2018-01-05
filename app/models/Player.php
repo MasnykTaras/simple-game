@@ -9,7 +9,7 @@ abstract class Player
 
 	public $positionY = '';
 
-	public $hitPoints = 10;
+	public $hitPoints = 2;
 
 	public $move = array(
 				'top' => array(

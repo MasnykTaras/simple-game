@@ -7,9 +7,9 @@ use app\models\Rule;
 
 class FirstPlayer extends Player
 	{
-		public $positionX = 0;
+		public $positionX;
 
-		public $positionY = 5;
+		public $positionY;
 
 		public function go($directions)
 		{	
@@ -21,7 +21,7 @@ class FirstPlayer extends Player
 				$newPosition = $_SESSION["player__1"]['position']['x'] + $nextStep['vlue'];
 
 				$oldPostitionX = $_SESSION["player__1"]['position']['x'];				
-				if($newPosition > 10 || $newPosition < 0 ){
+				if($newPosition > Rule::getSizeArea() || $newPosition < 0 ){
 					$this->positionX = $_SESSION["player__1"]['position']['x'];
 				}else{					
 					
@@ -39,7 +39,7 @@ class FirstPlayer extends Player
 				$oldPostitionY = $_SESSION["player__1"]['position']['y'];
 				
 				
-				if($newPosition > 10 || $newPosition < 0){
+				if($newPosition > Rule::getSizeArea() || $newPosition < 0){
 					$this->positionY = $_SESSION["player__1"]['position']['y'];
 				}else{
 					
@@ -57,7 +57,14 @@ class FirstPlayer extends Player
 		}
 		public function shoot($p1position, $shoot)
 		{
-			return 'shoot';
+			if($p1position['x'] == $shoot['x'] && $p1position['y'] == $shoot['y']){
+				$newHit =  $_SESSION["player__2"]['hitspoints'] - 1;
+			}else{
+				$newHit =  $_SESSION["player__2"]['hitspoints'];
+			}
+			
+			return $this->hitPoints = $newHit;
+			
 		}
 		public function hit()
 		{
