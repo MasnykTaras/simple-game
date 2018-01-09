@@ -1,12 +1,15 @@
 <?php 
 
 include_once(ROOT . '/views/layouts/header.php'); 
+use app\models\Rule;
 
 ?>
 
-
+<div class="player__info">
+	<p>Player 1 hitpoint: <span><?php echo $positionPlayer1['hitspoints']; ?></span></p>
+	<p>Player 2 hitpoint: <span><?php echo $positionPlayer2['hitspoints']; ?></span></p>
+</div>
 <div class="custom__container">
-	
 	<div class="game__space" style="width: <?php echo $areaWidth; ?>px">
 		<?php 		
 		$i = 1; 
@@ -48,7 +51,13 @@ include_once(ROOT . '/views/layouts/header.php');
 			<div class="form-group">
 				<label>Hit</label>
 				<br>				
-				<button disabled type="submit" name='hit' value="hit" class="btn btn-default btn-hit">Hit</button>
+				<button 
+
+				<?php if(!Rule::getHit()):?>
+					disabled 
+				<?php endif; ?>
+				type="submit" name='hit' value="hit" class="btn btn-default btn-hit">Hit</button>
+
 			</div>
 			<button type="submit" name='destroy' valye="destroy" class="btn btn-default">Start new game</button>
 		</form>

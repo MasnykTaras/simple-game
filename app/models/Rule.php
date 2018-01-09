@@ -5,7 +5,7 @@ namespace app\models;
 abstract class Rule
 {
 
-	private static $areaSize = 3;
+	private static $areaSize = 5;
 	/**
 	 * Check if players one behind the other
 	 * @param array $player__1 
@@ -14,13 +14,7 @@ abstract class Rule
 	 */
 	static public function overPlacement($player__1, $player__2)
 	{
-			$p1positionX = $player__1['x'];
-			$p1positionY = $player__1['y'];
-
-			$p2positionX = $player__2['x'];
-			$p2positionY = $player__2['y'];			
-
-			if(($p1positionX == $p2positionX) && ($p1positionY == $p2positionY)){
+			if(($player__1['x'] == $player__2['x']) && ($player__1['y'] == $player__2['y'])){
 				return false;
 			}
 			return true;
@@ -74,10 +68,33 @@ abstract class Rule
 					</div>
 				</div>";
 	}
-
+	/**
+	 * Get play area size
+	 * @return int
+	 */
 	static public function getSizeArea()
 	{
 		return self::$areaSize;
+	}
+
+	static public function getHit()
+	{
+		if($_SESSION["player__1"]['position']['x'] == $_SESSION["player__2"]['position']['x'] || $_SESSION["player__1"]['position']['y'] == $_SESSION["player__2"]['position']['y']){
+			if(pow($_SESSION["player__1"]['position']['x'] - $_SESSION["player__2"]['position']['x'], 2) == 1 || pow($_SESSION["player__1"]['position']['y'] - $_SESSION["player__2"]['position']['y'], 2) == 1 ){
+
+				return true;
+			}
+		}
+		return false;
+	}
+
+	static public function checkPositionP1($player__1, $player__2)
+	{
+		if(Rule::overPlacement($player__1->position(),$player__2->position())){
+
+			$_SESSION["player__1"]['position'] = $player__1->position();		
+
+		}
 	}
 
 }

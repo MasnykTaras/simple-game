@@ -22,16 +22,11 @@ class SiteController
 
 		$positionPlayer1 = $player__1->position();
 
-		$positionPlayer2 = $player__2->position();			
-		
-			
+		$positionPlayer2 = $player__2->position();		
 
 		if(isset($_POST) && !empty($_POST) && !isset($_POST['destroy'])){
-			
-			
 
 			$player__1->go($player__1->creatMove());
-				
 			
 			if(isset($_POST['go'])){
 
@@ -42,15 +37,15 @@ class SiteController
 					$_SESSION["player__2"]['position'] = $player__2->position();		
 
 				}
+				Rule::checkPositionP1($player__1,$player__2);
 
 			}
-			if(Rule::overPlacement($player__1->position(),$player__2->position())){
 
-				$_SESSION["player__1"]['position'] = $player__1->position();		
+			
 
-			}
 			if(isset($_POST['shoot'])){
 
+				
 				$shoot = array(
 					'x' => $_POST['shootMarkX'], 
 					'y' => $_POST['shootMarkY']
@@ -60,17 +55,32 @@ class SiteController
 
 					$_SESSION["player__1"]['hitspoints'] = $_SESSION["player__1"]['hitspoints'] - 1;
 
-				}				
+				}	
 
-			}				
+				$_SESSION["player__2"]['position'] = $player__2->position();
 
-			
+				Rule::checkPositionP1($player__1,$player__2);	
+
+			}
+			if(isset($_POST['hit'])){
+
+				$player__2->hit();
+
+				$_SESSION["player__2"]['position'] = $player__2->position();
+
+				$_SESSION["player__1"]['hitspoints'] = $_SESSION["player__1"]['hitspoints'] - 1;
+
+				
+
+				Rule::checkPositionP1($player__1,$player__2);
+
+			}
 
 			if($result = Rule::cheackHitpoint()){						
 
 				$advertisement = Rule::advertisement($result);		
 
-			}							
+			}						
 
 		}elseif($_POST['destroy']){
 
@@ -82,14 +92,10 @@ class SiteController
 			
 		}
 
-		echo "P1";
-		var_dump($_SESSION["player__1"]);
-		echo "P2";
-		var_dump($_SESSION["player__2"]);
-
 		$positionPlayer1 = $_SESSION["player__1"];
 
 		$positionPlayer2 = $_SESSION["player__2"];
+
 
 		include_once(ROOT . '/views/site/index.php');
 

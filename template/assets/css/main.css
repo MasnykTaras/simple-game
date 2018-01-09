@@ -40,7 +40,7 @@ footer{
   display: flex;
   flex-wrap: wrap;
 /*  width: 570px;*/
-  padding: 0 10px;
+  /*padding: 0 10px;*/
 }
 .form-area{
 	display: flex;
@@ -82,8 +82,7 @@ footer{
 	text-align: center;
 	vertical-align: middle;
 }
-.reuslt p {	
-	
+.reuslt p {		
 	line-height: 32px;
     font-size: 32px;
     padding: 20px;  
@@ -92,6 +91,13 @@ footer{
 	width: 25px;
 	margin-bottom: 5px;
 }
-
+.player__info{
+	max-width: 900px;
+	margin: 0 auto;
+}
+.player__info span{
+	color: green;
+	font-size: 18px;
+}
 
 
