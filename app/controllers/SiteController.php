@@ -13,15 +13,12 @@ class SiteController
 
 		$sizeArea = Rule::getSizeArea();
 
-
 		$areaWidth = ($sizeArea )  * 50 + 20;
 
 		$player__1->positionX = 1;
 		$player__1->positionY = ceil($sizeArea/2);
 		$player__2->positionX = $sizeArea;
 		$player__2->positionY = floor($sizeArea/2);
-
-
 
 		$positionPlayer1 = $player__1->position();
 
@@ -31,15 +28,10 @@ class SiteController
 
 		if(isset($_POST) && !empty($_POST) && !isset($_POST['destroy'])){
 			
+			
+
 			$player__1->go($player__1->creatMove());
-
-			var_dump(Rule::overPlacement($player__1->position(),$player__2->position()));
-
-			if(Rule::overPlacement($player__1->position(),$player__2->position())){
-
-				$_SESSION["player__1"]['position'] = $player__1->position();		
-
-			}	
+				
 			
 			if(isset($_POST['go'])){
 
@@ -50,6 +42,11 @@ class SiteController
 					$_SESSION["player__2"]['position'] = $player__2->position();		
 
 				}
+
+			}
+			if(Rule::overPlacement($player__1->position(),$player__2->position())){
+
+				$_SESSION["player__1"]['position'] = $player__1->position();		
 
 			}
 			if(isset($_POST['shoot'])){
@@ -63,40 +60,36 @@ class SiteController
 
 					$_SESSION["player__1"]['hitspoints'] = $_SESSION["player__1"]['hitspoints'] - 1;
 
-				}
+				}				
 
 			}				
 
-			if($result = Rule::cheackHitpoint()){				
-				
+			
+
+			if($result = Rule::cheackHitpoint()){						
 
 				$advertisement = Rule::advertisement($result);		
 
-
-			}	
-						
+			}							
 
 		}elseif($_POST['destroy']){
 
-			session_destroy();
-			
+			session_destroy();			
 
 		}else{
 
-			Rule::start($player__1, $player__2);
-						
+			Rule::start($player__1, $player__2);						
 			
 		}
 
-		
+		echo "P1";
+		var_dump($_SESSION["player__1"]);
+		echo "P2";
+		var_dump($_SESSION["player__2"]);
 
 		$positionPlayer1 = $_SESSION["player__1"];
 
 		$positionPlayer2 = $_SESSION["player__2"];
-echo 'p1';
-var_dump($_SESSION["player__1"]);
-echo 'p1';
-var_dump($_SESSION["player__2"]);
 
 		include_once(ROOT . '/views/site/index.php');
 

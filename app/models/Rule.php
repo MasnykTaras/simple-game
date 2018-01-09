@@ -5,7 +5,7 @@ namespace app\models;
 abstract class Rule
 {
 
-	private static $areaSize = 4;
+	private static $areaSize = 3;
 	/**
 	 * Check if players one behind the other
 	 * @param array $player__1 

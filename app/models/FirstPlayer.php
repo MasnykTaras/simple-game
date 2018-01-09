@@ -52,7 +52,8 @@ class FirstPlayer extends Player
 		public function creatMove()
 		{
 			$move = array('top', 'down', 'left', 'right');
-			// $moveKey = array_rand($move, 1);
+			// $move  = array('right');
+		
 			return $move[array_rand($move, 1)];
 		}
 		public function shoot($pPosition, $shoot)
