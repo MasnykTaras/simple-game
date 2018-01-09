@@ -68,7 +68,10 @@ abstract class Rule
 	static public function advertisement($result)
 	{
 		return "<div class='reuslt'>
-					<p>$result player Win</p>
+					<div class='content'>
+						<p>$result player Win</p>
+						<a href='/'>Restart game</a>
+					</div>
 				</div>";
 	}
 
