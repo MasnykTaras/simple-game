@@ -50,8 +50,10 @@ class SiteController
 					'x' => $_POST['shootMarkX'], 
 					'y' => $_POST['shootMarkY']
 				);
-
-				if($player__2->shoot($_SESSION["player__1"]['position'], $shoot)){
+                                
+                               
+                                
+				if($player__2->shoot($player__1->position(), $shoot)){
 
 					$_SESSION["player__1"]['hitspoints'] = $_SESSION["player__1"]['hitspoints'] - 1;
 
@@ -63,11 +65,12 @@ class SiteController
 
 			}
 			if(isset($_POST['hit'])){
+                                
 
 				$player__2->hit();
-
-				$_SESSION["player__2"]['position'] = $player__2->position();
-
+				
+                                $_SESSION["player__2"]['position'] = $player__2->position();
+                                
 				$_SESSION["player__1"]['hitspoints'] = $_SESSION["player__1"]['hitspoints'] - 1;
 
 				
